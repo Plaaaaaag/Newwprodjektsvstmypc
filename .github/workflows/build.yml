@@ -6,6 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip -q VinnitsaPower.zip
+      - run: grep -rl "Europe/Kyiv" VinnitsaPower/app/src | xargs sed -i 's#Europe/Kyiv#Europe/Kiev#g'
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
       - run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
